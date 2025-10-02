@@ -5,7 +5,6 @@ Predict student performance using a linear regression model built entirely from 
 This project demonstrates:
 - Implementing linear regression with **gradient descent** and **normal equation**
 - Feature analysis and residual plots
-- Extensions such as polynomial regression or regularization
 
 ---
 
@@ -19,4 +18,13 @@ This project demonstrates:
 ## Installation
 1. Clone this repository:
 ```bash
-git clone 
+git clone https://github.com/leeo53/StudentGradePrediction.git
+```
+2. Install Libraries
+```bash
+pip install numpy pandas scikit-learn ucimlrepo
+```
+
+## Usage
+
+
