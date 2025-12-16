@@ -1,3 +1,5 @@
+from xml.sax.handler import feature_namespaces
+
 from ucimlrepo import fetch_ucirepo
 import numpy as np
 import regression_model as model
@@ -45,7 +47,7 @@ X = pd.get_dummies(X, columns=['Mjob','Fjob','reason','guardian'])
 X_no_school = X.drop(columns="school")
 
 #for predict.py
-train_columns = list(X_no_school.columns)
+feature_columns = list(X_no_school.columns)
 
 X_no_school = np.array(X_no_school,dtype=float)
 X = np.array(X, dtype=float)
@@ -168,7 +170,7 @@ NE_mse,NE_rmse = testMSE(X_test,y_test,w_NE,b_NE)
 NE_mae = testMAE(X_test,y_test,w_NE,b_NE)
 
 #for predict.py
-np.savez("weights.npz", w=w_GD2, b=b_GD2, train_columns=np.array(train_columns, dtype=object))
+np.savez("weights.npz", w=w_GD2, b=b_GD2, train_columns=np.array(feature_columns, dtype=object))
 
 print("\n"+"="*40)
 print("WITHOUT 'school' feature")
@@ -204,3 +206,17 @@ plt.title("Training vs Validation Loss over Epochs")
 plt.legend()
 plt.grid(True)
 plt.savefig("GD2MAE_noschool.png",dpi=300)
+
+#distribution plot
+y_pred = model.predict(X_test,w_NE,b_NE)
+y_pred_scaled = y_pred.flatten() *5
+y_test_scaled = y_test.flatten() * 5
+plt.figure(figsize=(8,5))
+bins=20
+plt.hist(y_test_scaled, bins, alpha=0.6, label="Actual", edgecolor="black")
+plt.hist(y_pred_scaled, bins, alpha=0.6, label="Predicted", edgecolor="black")
+plt.title("Distribution of Actual vs Predicted Grades")
+plt.xlabel("Final Grade (0–100)")
+plt.ylabel("Number of Students")
+plt.legend()
+plt.savefig("distribution.png",dpi=300)

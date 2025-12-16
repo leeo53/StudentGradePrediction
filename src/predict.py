@@ -1,7 +1,8 @@
 import numpy as np
 from ucimlrepo import fetch_ucirepo
 import pandas as pd
-import regression_model as model
+import RegressionModel as model
+import matplotlib.pyplot as plt
 
 # fetch dataset
 student_performance = fetch_ucirepo(id=320)
@@ -12,7 +13,8 @@ b = data['b']
 train_columns = data['train_columns']
 
 features = student_performance.data.features.iloc[0]
-g3 = student_performance.data.targets.values[:,2]
+g3 = student_performance.data.targets.values[:,2]*5
+
 
 
 # Collect raw inputs from user
