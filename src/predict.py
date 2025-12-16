@@ -1,7 +1,7 @@
 import numpy as np
 from ucimlrepo import fetch_ucirepo
 import pandas as pd
-import RegressionModel as model
+import regression_model as model
 
 # fetch dataset
 student_performance = fetch_ucirepo(id=320)

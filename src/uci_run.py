@@ -1,10 +1,13 @@
 from ucimlrepo import fetch_ucirepo
 import numpy as np
-import RegressionModel as model
+import regression_model as model
+import tune as tune
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import argparse
 import matplotlib.pyplot as plt
+
+# This File runs my from scratch model on the UCI Student Performance Dataset
 
 parser = argparse.ArgumentParser(description="Student Grade Prediction")
 parser.add_argument("--show-epochs", action="store_true",
@@ -62,56 +65,6 @@ X_train, X_val, y_train, y_val = train_test_split(
 # variable information
 # print(student_performance.variables)
 
-def trainMSE(X,y,X_val,y_val,lr,epochs,showEpochs):
-    w=np.random.randn(X.shape[1]) * 0.01
-    b=0
-    t_losses = []
-    val_losses = []
-    for epoch in range(epochs):
-        y_pred = model.predict(X, w, b)
-        loss = model.lossMSE(y, y_pred)
-        t_losses.append(loss)
-
-        y_val_pred = model.predict(X_val, w, b)
-        val_loss = model.lossMSE(y_val, y_val_pred)
-        val_losses.append(val_loss)
-        if showEpochs and epoch % 10 == 0:
-                print(f"lr: {lr},Epoch {epoch}: Loss: {loss:.3f}")
-        w, b = model.gradientMSE(X, y, w, b, lr)
-    return w,b,t_losses,val_losses
-
-def trainMAE(X,y,X_val,y_val,lr,epochs,showEpochs):
-    w=np.random.randn(X.shape[1]) * 0.01
-    b=0
-    t_losses = []
-    val_losses = []
-    for epoch in range(epochs):
-        y_pred = model.predict(X, w, b)
-        loss = model.lossMAE(y, y_pred)
-        t_losses.append(loss)
-
-        y_val_pred = model.predict(X_val, w, b)
-        val_loss = model.lossMAE(y_val, y_val_pred)
-        val_losses.append(val_loss)
-        if showEpochs and epoch % 10 == 0:
-            print(f"lr: {lr}, Epoch {epoch}: Loss: {loss:.3f}")
-        w, b = model.gradientMAE(X, y, w, b, lr)
-    return w,b,t_losses, val_losses
-
-def hyperparameter_tuning(trainfunction,X,y,X_val,y_val, learning_rates, epochs_list,showEpochs):
-    best_mae = float('inf')
-    best_params = {}
-    for lr in learning_rates:
-        for ep in epochs_list:
-            w, b, t_losses, val_losses = trainfunction(X, y, X_val, y_val, lr, epochs=ep, showEpochs=showEpochs)
-            y_val_pred = model.predict(X_val, w, b)
-            val_mae = model.lossMAE(y_val_pred, y_val)
-            if val_mae < best_mae:
-                best_mae = val_mae
-                best_params = {'learning_rate': lr, 'epochs': ep, 'w': w, 'b': b,
-                               't_losses': t_losses, 'val_losses': val_losses}
-    return best_params
-
 def testMSE(X,y,w,b):
     y_pred = model.predict(X, w, b)
     mse = model.lossMSE(y, y_pred)
@@ -123,16 +76,16 @@ def testMAE(X,y,w,b):
     mae = model.lossMAE(y, y_pred)
     return mae
 
-# testing and output
-best_paramsGD1= hyperparameter_tuning(trainMSE,X_train,y_train,X_val,y_val,learning_rates,
-                                       epochs_list,showEpochs=False)
+# training, testing and output
+best_paramsGD1= tune.run(model.fit, X_train, y_train, X_val, y_val, learning_rates,
+                         epochs_list, showEpochs=False, method="MSE")
 w_GD1 = best_paramsGD1['w']
 b_GD1 = best_paramsGD1['b']
 GD1_mse,GD1_rmse = testMSE(X_test, y_test, w_GD1, b_GD1)
 GD1_mae = testMAE(X_test, y_test, w_GD1, b_GD1)
 
-best_paramsGD2= hyperparameter_tuning(trainMAE,X_train,y_train,X_val,y_val,learning_rates,
-                                       epochs_list,showEpochs=False)
+best_paramsGD2= tune.run(model.fit, X_train, y_train, X_val, y_val, learning_rates,
+                         epochs_list, showEpochs=False, method="MAE")
 w_GD2 = best_paramsGD2['w']
 b_GD2 = best_paramsGD2['b']
 GD2_mse,GD2_rmse = testMSE(X_test,y_test,w_GD2,b_GD2)
@@ -196,15 +149,15 @@ X_train, X_val, y_train, y_val = train_test_split(
     X_train, y_train, test_size=0.25, random_state=42
 )
 
-best_paramsGD1= hyperparameter_tuning(trainMSE,X_train,y_train,X_val,y_val,learning_rates,
-                                       epochs_list,showEpochs=False)
+best_paramsGD1= tune.run(model.fit, X_train, y_train, X_val, y_val, learning_rates,
+                         epochs_list, showEpochs=False, method="MSE")
 w_GD1 = best_paramsGD1['w']
 b_GD1 = best_paramsGD1['b']
 GD1_mse,GD1_rmse = testMSE(X_test, y_test, w_GD1, b_GD1)
 GD1_mae = testMAE(X_test, y_test, w_GD1, b_GD1)
 
-best_paramsGD2= hyperparameter_tuning(trainMAE,X_train,y_train,X_val,y_val,learning_rates,
-                                       epochs_list,showEpochs=False)
+best_paramsGD2= tune.run(model.fit, X_train, y_train, X_val, y_val, learning_rates,
+                         epochs_list, showEpochs=False, method="MAE")
 w_GD2 = best_paramsGD2['w']
 b_GD2 = best_paramsGD2['b']
 GD2_mse,GD2_rmse = testMSE(X_test,y_test,w_GD2,b_GD2)

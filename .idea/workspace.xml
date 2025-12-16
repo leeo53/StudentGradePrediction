@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73295557-e364-4837-b2c9-42dea2001f6e" name="Changes" comment="testing code and hyperparameter tuning added">
-      <change afterPath="$PROJECT_DIR$/src/predict.py" afterDir="false" />
+    <list default="true" id="73295557-e364-4837-b2c9-42dea2001f6e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/mendeley_run.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/regression_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tune.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/StudentGradePrediction.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/StudentGradePrediction.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RegressionModel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/uci_run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/predict.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +38,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/leeo53/StudentGradePrediction.git&quot;,
-    &quot;accountId&quot;: &quot;18a49005-7766-4741-ba75-033fcefb9662&quot;
+    &quot;accountId&quot;: &quot;89f42de2-0378-4f31-8989-85b4ee97e5d7&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -49,7 +54,10 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.main.executor": "Run",
+    "Python.mendeley_run.executor": "Run",
+    "Python.mendely_run.executor": "Run",
     "Python.predict.executor": "Run",
+    "Python.uci_run.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -65,8 +73,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-PY-252.26199.168" />
-        <option value="bundled-python-sdk-b3d66beaba9a-c6efb3732140-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26199.168" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-PY-251.28774.16" />
+        <option value="bundled-python-sdk-14d54ed193d7-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.28774.16" />
       </set>
     </attachedChunks>
   </component>
@@ -79,30 +87,21 @@
       <updated>1759403614680</updated>
       <workItem from="1759403616675" duration="91000" />
       <workItem from="1759404045726" duration="46000" />
-      <workItem from="1759404117300" duration="9328000" />
-      <workItem from="1759516956025" duration="31000" />
-      <workItem from="1759517002806" duration="17336000" />
+      <workItem from="1759404117300" duration="9099000" />
+      <workItem from="1759859121765" duration="4385000" />
+      <workItem from="1760121089451" duration="1321000" />
+      <workItem from="1765918020836" duration="6096000" />
     </task>
-    <task id="LOCAL-00001" summary="testing code and hyperparameter tuning added">
-      <option name="closed" value="true" />
-      <created>1759416425924</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1759416425924</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="testing code and hyperparameter tuning added" />
-    <option name="LAST_COMMIT_MESSAGE" value="testing code and hyperparameter tuning added" />
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/StudentGradePrediction$predict.coverage" NAME="predict Coverage Results" MODIFIED="1759534907094" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/StudentGradePrediction$main.coverage" NAME="main Coverage Results" MODIFIED="1759525895614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/StudentGradePrediction$main.coverage" NAME="main Coverage Results" MODIFIED="1759535423455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/StudentGradePrediction$uci_run.coverage" NAME="uci_run Coverage Results" MODIFIED="1765918493947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/StudentGradePrediction$mendeley_run.coverage" NAME="mendeley_run Coverage Results" MODIFIED="1765924405732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/StudentGradePrediction$predict.coverage" NAME="predict Coverage Results" MODIFIED="1759536293739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/StudentGradePrediction$mendely_run.coverage" NAME="mendely_run Coverage Results" MODIFIED="1759862294528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>
