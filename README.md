@@ -203,10 +203,8 @@ Future work will involve testing real-world inputs against models trained on the
 
 ## Future Work
 
-* Add L2 regularization (ridge regression)
-* Compare against sklearn's LinearRegression
-* Feature importance visualization
-* Residual and prediction plots
+- Add a simple interface that allows users to input their own feature values and see a predicted grade.
+
 
 ---
 
