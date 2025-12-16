@@ -170,6 +170,7 @@ This will:
 2. Tune hyperparameters using the validation set
 3. Train the final model
 4. Report MAE, MSE, and RMSE on the test set
+5. Output 4 training loss vs validation loss over epochs graphs
 
 ---
 
