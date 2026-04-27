@@ -52,7 +52,7 @@ This dataset focuses on **feature engineering**, ordinal encoding, and robustnes
 All models are implemented manually using NumPy:
 
 * **Prediction:**
-  [ \hat{y} = Xw + b ]
+  $\hat{y} = Xw + b$
 
 * **Loss Functions:**
 
